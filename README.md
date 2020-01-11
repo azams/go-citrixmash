@@ -1,4 +1,4 @@
-**Exploits the Citrix Directory Traversal Bug: CVE-2019-19781**
+**Exploit Citrix - Remote Code Execution Bug: CVE-2019-19781**
 
 Writeup and mitigation: https://www.trustedsec.com/blog/critical-exposure-in-citrix-adc-netscaler-unauthenticated-remote-code-execution/
 Forensics and IoC Blog: https://www.trustedsec.com/blog/netscaler-remote-code-execution-forensics/
